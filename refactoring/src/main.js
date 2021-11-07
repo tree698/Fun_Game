@@ -9,7 +9,6 @@ gameFinishBanner.setClickListener(() => {
   game.start();
 });
 
-// const game = new Game(5, 5, 6);
 const game = new GameBuilder()
   .withCarrotCount(3)
   .withBugCount(3)
@@ -17,7 +16,6 @@ const game = new GameBuilder()
   .build();
 
 game.setGameStopListener((reason) => {
-  // console.log(reason);
   let message;
   switch (reason) {
     case Reason.cancel:
@@ -37,21 +35,3 @@ game.setGameStopListener((reason) => {
   }
   gameFinishBanner.showText(message);
 });
-
-// game.setGameStopListener(onGameStop);
-
-// function onGameStop(message) {
-//   switch (message) {
-//     case 'cancel':
-//       gameFinishBanner.showText('REPLY ❓');
-//       break;
-//     case 'win':
-//       gameFinishBanner.showText();
-//       break;
-//     case 'lose':
-//       gameFinishBanner.showText('YOU LOST 💩');
-//       break;
-//     default:
-//       throw Error('Not a proper message');
-//   }
-// }
