@@ -16,21 +16,30 @@
   <body>
     <section class="game">
       <header class="game__header">
-        <button class="game__button">
-          <i class="fas fa-play"></i>
+        <button class="game__stop-button">
+          <i class="fas fa-stop"></i>
         </button>
         <span class="game__timer">0:00</span>
         <span class="game__score">0</span>
       </header>
       <section class="game__field"></section>
     </section>
-    <section class="pop-up pop-up__hide">
+    <section class="pop-up hide">
       <header>
         <button class="pop-up__refresh">
           <i class="fas fa-redo-alt"></i>
         </button>
         <span class="pop-up__message">Hello</span>
       </header>
+    </section>
+    <section class="level">
+      <div class="level-title">Fun Game 🥕</div>
+      <div class="level-message">~ Choose One ~</div>
+      <div class="level-button-wrap">
+        <button class="button level-button level-easy">easy</button>
+        <button class="button level-button level-medium">medium</button>
+        <button class="button level-button level-high">high</button>
+      </div>
     </section>
   </body>
 </html>

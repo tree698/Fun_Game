@@ -40,14 +40,25 @@ class Game {
 
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
-    this.gameBtn = document.querySelector('.game__button');
-    this.gameBtn.addEventListener('click', () => {
+    this.gameStopBtn = document.querySelector('.game__stop-button');
+
+    this.easyBtn = document.querySelector('.level-easy');
+    this.easyBtn.addEventListener('click', () => {
       if (this.started) {
         this.stop(Reason.cancel);
       } else {
         this.start();
       }
     });
+
+    this.gameStopBtn.addEventListener('click', () => {
+      if (this.started) {
+        this.stop(Reason.cancel);
+      } else {
+        this.start();
+      }
+    });
+
     this.gameField = new Field(this.carrotCount, this.bugCount);
     this.gameField.setItemClickListener(this.onItemClick);
 
@@ -62,6 +73,7 @@ class Game {
 
   start() {
     this.started = true;
+    this.hideLevel();
     this.initGame();
     this.showStopBtn();
     this.showTimerAndScore();
@@ -72,7 +84,7 @@ class Game {
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
-    this.hideGameBtn();
+    this.hideStopBtn();
     sound.stopBackground();
     this.onGameStop && this.onGameStop(reason);
   }
@@ -97,14 +109,11 @@ class Game {
   }
 
   showStopBtn() {
-    const icon = this.gameBtn.querySelector('.fas');
-    icon.classList.add('fa-stop');
-    icon.classList.remove('fa-play');
-    this.gameBtn.style.visibility = 'visible';
+    this.gameStopBtn.style.visibility = 'visible';
   }
 
-  hideGameBtn() {
-    this.gameBtn.style.visibility = 'hidden';
+  hideStopBtn() {
+    this.gameStopBtn.style.visibility = 'hidden';
   }
 
   showTimerAndScore() {
@@ -140,5 +149,10 @@ class Game {
     this.score = 0;
     this.gameField.init();
     this.gameScore.textContent = this.carrotCount;
+  }
+
+  hideLevel() {
+    const level = document.querySelector('.level');
+    level.classList.add('hide');
   }
 }

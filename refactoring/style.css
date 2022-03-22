@@ -2,7 +2,7 @@
 
 body {
   text-align: center;
-  background-color: black;
+  background-color: #393f49;
 }
 
 button {
@@ -30,7 +30,7 @@ button {
   padding: 20px;
 }
 
-.game__button {
+.game__stop-button {
   width: 60px;
   height: 60px;
   margin: auto;
@@ -39,6 +39,7 @@ button {
   border-radius: 12px;
   background-color: wheat;
   transition: tansform 300ms ease-in;
+  visibility: hidden;
 }
 
 .game__button:hover {
@@ -88,10 +89,6 @@ button {
   border-radius: 20px;
 }
 
-.pop-up__hide {
-  display: none;
-}
-
 .pop-up__refresh {
   width: 70px;
   height: 70px;
@@ -121,4 +118,57 @@ button {
 .carrot:hover,
 .bug:hover {
   transform: scale(1.1);
+}
+
+.level {
+  width: 450px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  transform: translateY(-140%);
+  background-color: #9a9300;
+  border-radius: 20px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.level-title {
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  margin-top: 46px;
+}
+
+.level-message {
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.level-button-wrap {
+  margin-top: 8px;
+}
+
+.level-button {
+  width: 100px;
+  height: 40px;
+  margin-right: 4px;
+  font-size: 20px;
+  border-radius: 6px;
+  transition: all 250ms ease-in;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.level-button:hover {
+  background-color: #fff55b;
+  font-weight: bold;
+  transform: scale(1.08);
+}
+
+.hide {
+  display: none;
 }

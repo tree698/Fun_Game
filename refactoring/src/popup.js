@@ -16,11 +16,11 @@ export default class PopUp {
   }
 
   hide() {
-    this.popUp.classList.add('pop-up__hide');
+    this.popUp.classList.add('hide');
   }
 
   showText(text) {
-    this.popUp.classList.remove('pop-up__hide');
+    this.popUp.classList.remove('hide');
     this.popUpMessage.textContent = text;
   }
 }
