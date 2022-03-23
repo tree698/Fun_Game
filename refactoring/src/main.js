@@ -5,10 +5,6 @@ import PopUp from './popup.js';
 import * as sound from './sound.js';
 
 const gameFinishBanner = new PopUp();
-gameFinishBanner.setClickListener(() => {
-  game.start();
-});
-
 const game = new GameBuilder()
   .withCarrotCount(3)
   .withBugCount(3)

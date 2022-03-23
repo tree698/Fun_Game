@@ -1,4 +1,8 @@
+'use strict';
+
 import { Field, ItemType } from './field.js';
+import GameLevel from './gameLevel.js';
+import PopUp from './popup.js';
 import * as sound from './sound.js';
 
 export const Reason = Object.freeze({
@@ -42,15 +46,6 @@ class Game {
     this.gameScore = document.querySelector('.game__score');
     this.gameStopBtn = document.querySelector('.game__stop-button');
 
-    this.easyBtn = document.querySelector('.level-easy');
-    this.easyBtn.addEventListener('click', () => {
-      if (this.started) {
-        this.stop(Reason.cancel);
-      } else {
-        this.start();
-      }
-    });
-
     this.gameStopBtn.addEventListener('click', () => {
       if (this.started) {
         this.stop(Reason.cancel);
@@ -59,8 +54,14 @@ class Game {
       }
     });
 
+    this.gameLevel = new GameLevel();
+    this.gameLevel.setEasyBtnClickListener(this.onEasyBtnClick);
+
     this.gameField = new Field(this.carrotCount, this.bugCount);
     this.gameField.setItemClickListener(this.onItemClick);
+
+    this.gameFinishBanner = new PopUp();
+    this.gameFinishBanner.setClickListener(this.onRefreshClick);
 
     this.started = false;
     this.timer = undefined;
@@ -73,7 +74,6 @@ class Game {
 
   start() {
     this.started = true;
-    this.hideLevel();
     this.initGame();
     this.showStopBtn();
     this.showTimerAndScore();
@@ -88,6 +88,17 @@ class Game {
     sound.stopBackground();
     this.onGameStop && this.onGameStop(reason);
   }
+
+  onEasyBtnClick = () => {
+    this.start();
+    this.gameLevel.hideLevel();
+  };
+
+  onRefreshClick = () => {
+    this.gameField.field.innerHTML = '';
+    this.hideTimerAndScore();
+    this.gameLevel.showLevel();
+  };
 
   onItemClick = (item) => {
     if (!this.started) {
@@ -121,6 +132,11 @@ class Game {
     this.gameScore.style.visibility = 'visible';
   }
 
+  hideTimerAndScore() {
+    this.gameTimer.style.visibility = 'hidden';
+    this.gameScore.style.visibility = 'hidden';
+  }
+
   startGameTimer() {
     let remainingTimeSec = this.gameDurationSec;
     this.updateTimerText(remainingTimeSec);
@@ -149,10 +165,5 @@ class Game {
     this.score = 0;
     this.gameField.init();
     this.gameScore.textContent = this.carrotCount;
-  }
-
-  hideLevel() {
-    const level = document.querySelector('.level');
-    level.classList.add('hide');
   }
 }
