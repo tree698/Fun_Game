@@ -55,7 +55,7 @@ class Game {
     });
 
     this.gameLevel = new GameLevel();
-    this.gameLevel.setEasyBtnClickListener(this.onEasyBtnClick);
+    this.gameLevel.setLevelBtnClickListener(this.onLevelBtnClick);
 
     this.gameField = new Field(this.carrotCount, this.bugCount);
     this.gameField.setItemClickListener(this.onItemClick);
@@ -89,7 +89,7 @@ class Game {
     this.onGameStop && this.onGameStop(reason);
   }
 
-  onEasyBtnClick = () => {
+  onLevelBtnClick = () => {
     this.start();
     this.gameLevel.hideLevel();
   };

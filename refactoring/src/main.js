@@ -2,9 +2,22 @@
 
 import GameBuilder, { Reason } from './game.js';
 import PopUp from './popup.js';
+import GameLevel from './gameLevel.js';
 import * as sound from './sound.js';
 
 const gameFinishBanner = new PopUp();
+
+const gameLevel = new GameLevel();
+gameLevel.setEasyLevelListener((message) => {
+  console.log(message);
+});
+gameLevel.setMediumLevelListener((message) => {
+  console.log(message);
+});
+gameLevel.setHighLevelListener((message) => {
+  console.log(message);
+});
+
 const game = new GameBuilder()
   .withCarrotCount(3)
   .withBugCount(3)
