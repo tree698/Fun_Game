@@ -2,7 +2,7 @@
 
 body {
   text-align: center;
-  background-color: #393f49;
+  background-color: #cfd8dc;
 }
 
 button {
@@ -20,8 +20,12 @@ button {
   border-radius: 20px;
   width: 800px;
   height: 500px;
-  margin: auto;
+  margin: 80px auto;
   background: url(img/background.png) center/cover;
+}
+
+.game-blur {
+  opacity: 0.3;
 }
 
 .game__header {
@@ -84,7 +88,7 @@ button {
   width: 350px;
   height: 170px;
   margin: auto;
-  transform: translateY(-140%);
+  transform: translateY(-200%);
   background-color: #00000090;
   border-radius: 20px;
 }
@@ -121,13 +125,14 @@ button {
 }
 
 .level {
-  width: 450px;
-  height: 270px;
+  width: 600px;
+  height: 280px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: auto;
-  transform: translateY(-140%);
-  background-color: #9a9300;
+  transform: translateY(-170%);
+  background-color: #47846f;
   border-radius: 20px;
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
@@ -138,23 +143,19 @@ button {
   font-size: 40px;
   color: white;
   font-weight: bold;
-  margin-top: 46px;
+  margin-bottom: 20px;
 }
 
 .level-message {
   color: white;
   font-size: 20px;
-  margin-top: 20px;
-}
-
-.level-button-wrap {
-  margin-top: 8px;
+  margin-bottom: 12px;
 }
 
 .level-button {
   width: 100px;
   height: 40px;
-  margin-right: 4px;
+  margin-right: 6px;
   font-size: 20px;
   border-radius: 6px;
   transition: all 250ms ease-in;
@@ -164,9 +165,21 @@ button {
 }
 
 .level-button:hover {
-  background-color: #fff55b;
+  color: white;
   font-weight: bold;
   transform: scale(1.08);
+}
+
+.level-easy:hover {
+  background-color: #ff953e;
+}
+
+.level-medium:hover {
+  background-color: #ff6300;
+}
+
+.level-high:hover {
+  background-color: #c42f00;
 }
 
 .hide {

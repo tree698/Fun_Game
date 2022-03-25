@@ -42,6 +42,7 @@ class Game {
     this.bugCount = bugCount;
     this.gameDurationSec = gameDuration;
 
+    this.game = document.querySelector('.game');
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
     this.gameStopBtn = document.querySelector('.game__stop-button');
@@ -78,6 +79,7 @@ class Game {
     this.showStopBtn();
     this.showTimerAndScore();
     this.startGameTimer();
+    this.removeBlurOnGame();
     sound.playBackground();
   }
 
@@ -98,6 +100,7 @@ class Game {
     this.gameField.field.innerHTML = '';
     this.hideTimerAndScore();
     this.gameLevel.showLevel();
+    this.addBlurOnGame();
   };
 
   onItemClick = (item) => {
@@ -165,5 +168,13 @@ class Game {
     this.score = 0;
     this.gameField.init();
     this.gameScore.textContent = this.carrotCount;
+  }
+
+  addBlurOnGame() {
+    this.game.classList.add('game-blur');
+  }
+
+  removeBlurOnGame() {
+    this.game.classList.remove('game-blur');
   }
 }
