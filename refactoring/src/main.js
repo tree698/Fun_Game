@@ -8,20 +8,32 @@ import * as sound from './sound.js';
 const gameFinishBanner = new PopUp();
 
 const gameLevel = new GameLevel();
-gameLevel.setEasyLevelListener((message) => {
-  console.log(message);
-});
-gameLevel.setMediumLevelListener((message) => {
-  console.log(message);
-});
-gameLevel.setHighLevelListener((message) => {
-  console.log(message);
+gameLevel.setLevelBtnClickListener((message) => {
+  // if (message === 'easy') {
+  //   return new GameBuilder()
+  //     .withCarrotCount(5)
+  //     .withBugCount(5)
+  //     .withGameDuration(5)
+  //     .build();
+  // } else if (message === 'medium') {
+  //   return new GameBuilder()
+  //     .withCarrotCount(10)
+  //     .withBugCount(10)
+  //     .withGameDuration(10)
+  //     .build();
+  // } else if (message === 'high') {
+  //   return new GameBuilder()
+  //     .withCarrotCount(50)
+  //     .withBugCount(50)
+  //     .withGameDuration(50)
+  //     .build();
+  // }
 });
 
 const game = new GameBuilder()
-  .withCarrotCount(3)
-  .withBugCount(3)
-  .withGameDuration(5)
+  .withCarrotCount(1)
+  .withBugCount(1)
+  .withGameDuration(3)
   .build();
 
 game.setGameStopListener((reason) => {
