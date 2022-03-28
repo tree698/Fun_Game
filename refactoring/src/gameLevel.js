@@ -11,7 +11,7 @@ export default class GameLevel {
       } else if (event.target.className == 'button level-button level-medium') {
         this.onClick && this.onClick('medium');
       } else if (event.target.className == 'button level-button level-high') {
-        this.onClick && this.onClick('heigh');
+        this.onClick && this.onClick('high');
       }
     });
   }

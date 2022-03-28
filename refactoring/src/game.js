@@ -69,10 +69,6 @@ class Game {
     this.score = 0;
   }
 
-  setGameStopListener(onGameStop) {
-    this.onGameStop = onGameStop;
-  }
-
   start() {
     this.started = true;
     this.initGame();
@@ -88,13 +84,34 @@ class Game {
     this.stopGameTimer();
     this.hideStopBtn();
     sound.stopBackground();
-    this.onGameStop && this.onGameStop(reason);
+    this.onGameStop(reason);
   }
 
-  onLevelBtnClick = () => {
-    this.start();
-    this.gameLevel.hideLevel();
-  };
+  onGameStop(reason) {
+    let message;
+    switch (reason) {
+      case Reason.cancel:
+        sound.playAlert();
+        message = 'REPLY ❓';
+        break;
+      case Reason.win:
+        sound.playWin();
+        message = 'YOU WON 🎉';
+        break;
+      case Reason.lose:
+        sound.playBug();
+        message = 'YOU LOST 💩';
+        break;
+      default:
+        throw new Error('not valid reason');
+    }
+    this.gameFinishBanner.showText(message);
+  }
+
+  // onLevelBtnClick = () => {
+  //   this.start();
+  //   this.gameLevel.hideLevel();
+  // };
 
   onRefreshClick = () => {
     this.gameField.field.innerHTML = '';
