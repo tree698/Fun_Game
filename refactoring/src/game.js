@@ -108,11 +108,6 @@ class Game {
     this.gameFinishBanner.showText(message);
   }
 
-  // onLevelBtnClick = () => {
-  //   this.start();
-  //   this.gameLevel.hideLevel();
-  // };
-
   onRefreshClick = () => {
     this.gameField.field.innerHTML = '';
     this.hideTimerAndScore();
