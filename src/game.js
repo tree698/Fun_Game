@@ -8,7 +8,7 @@ import * as sound from './sound.js';
 export const Reason = Object.freeze({
   win: 'win',
   lose: 'lose',
-  cancel: 'cancel',
+  pause: 'pause',
 });
 
 export default class GameBuilder {
@@ -46,12 +46,13 @@ class Game {
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
     this.gameStopBtn = document.querySelector('.game__stop-button');
+    this.icon = this.gameStopBtn.querySelector('.fa-solid');
 
     this.gameStopBtn.addEventListener('click', () => {
       if (this.started) {
-        this.stop(Reason.cancel);
+        this.pause();
       } else {
-        this.start();
+        this.play();
       }
     });
 
@@ -67,6 +68,27 @@ class Game {
     this.started = false;
     this.timer = undefined;
     this.score = 0;
+  }
+
+  pause() {
+    this.started = false;
+    sound.playAlert();
+    this.stopGameTimer();
+    this.bePlayBtn();
+    this.gameFinishBanner.hideRefresh();
+    this.gameFinishBanner.showText('REPLY ❓');
+    sound.stopBackground();
+    // this.freezeItems();
+  }
+
+  play() {
+    this.started = true;
+    this.gameFinishBanner.hide();
+    this.gameFinishBanner.showRefresh();
+    this.initGame();
+    this.beStopBtn();
+    this.startGameTimer();
+    sound.playBackground();
   }
 
   start() {
@@ -90,10 +112,6 @@ class Game {
   onGameStop(reason) {
     let message;
     switch (reason) {
-      case Reason.cancel:
-        sound.playAlert();
-        message = 'REPLY ❓';
-        break;
       case Reason.win:
         sound.playWin();
         message = 'YOU WON 🎉';
@@ -140,6 +158,16 @@ class Game {
 
   hideStopBtn() {
     this.gameStopBtn.style.visibility = 'hidden';
+  }
+
+  beStopBtn() {
+    this.icon.classList.add('fa-stop');
+    this.icon.classList.remove('fa-play');
+  }
+
+  bePlayBtn() {
+    this.icon.classList.add('fa-play');
+    this.icon.classList.remove('fa-stop');
   }
 
   showTimerAndScore() {

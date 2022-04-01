@@ -5,7 +5,6 @@ import GameLevel from './gameLevel.js';
 
 const gameLevel = new GameLevel();
 gameLevel.setLevelBtnClickListener((message) => {
-  gameLevel.hideLevel();
   let carrotCount;
   let bugCount;
   let gameDuration;
@@ -28,4 +27,6 @@ gameLevel.setLevelBtnClickListener((message) => {
     .withGameDuration(gameDuration)
     .build()
     .start();
+
+  gameLevel.hideLevel();
 });
