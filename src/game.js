@@ -83,12 +83,12 @@ class Game {
 
   play() {
     this.started = true;
-    this.gameFinishBanner.hide();
-    this.gameFinishBanner.showRefresh();
-    this.initGame();
-    this.beStopBtn();
-    this.startGameTimer();
     sound.playBackground();
+    this.startGameTimer();
+    this.beStopBtn();
+    this.gameFinishBanner.showRefresh();
+    this.gameFinishBanner.hide();
+    this.initGame();
   }
 
   start() {

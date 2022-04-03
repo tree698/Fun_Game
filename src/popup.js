@@ -31,7 +31,6 @@ export default class PopUp {
 
   showRefresh() {
     this.popUpRefresh.classList.remove('hide');
-    this.popUpMessage.style.lineHeight = '60px';
-    // this.popUpMessage.style.removeProperty('lineHeight');
+    this.popUpMessage.style.removeProperty('line-height');
   }
 }
