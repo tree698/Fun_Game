@@ -16,6 +16,15 @@ export class Field {
     this.field = document.querySelector('.game__field');
     this.fieldRect = this.field.getBoundingClientRect();
     this.field.addEventListener('click', this.onClick);
+
+    this.gameIcon = document.querySelector('.fa-solid');
+    this.gameIcon.addEventListener('click', (event) => {
+      if (event.target.matches('.fa-stop')) {
+        this.field.removeEventListener('click', this.onClick);
+      } else {
+        this.field.addEventListener('click', this.onClick);
+      }
+    });
   }
 
   init() {
@@ -44,20 +53,20 @@ export class Field {
     }
   }
 
-  setItemClickListener(onItemClick) {
-    this.onItemClick = onItemClick;
-  }
-
   onClick = (event) => {
     const target = event.target;
     if (target.matches('.carrot')) {
       target.remove();
-      sound.playCarrot();
+      // sound.playCarrot();
       this.onItemClick && this.onItemClick(ItemType.carrot);
     } else if (target.matches('.bug')) {
       this.onItemClick && this.onItemClick(ItemType.bug);
     }
   };
+
+  setItemClickListener(onItemClick) {
+    this.onItemClick = onItemClick;
+  }
 }
 
 function randomNumber(min, max) {

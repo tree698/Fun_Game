@@ -5,14 +5,23 @@ export default class PopUp {
     this.popUp = document.querySelector('.pop-up');
     this.popUpRefresh = document.querySelector('.pop-up__refresh');
     this.popUpMessage = document.querySelector('.pop-up__message');
+    // this.popUpRefresh.addEventListener('click', () => {
+    //   this.onClick && this.onClick();
+    //   this.hide();
+    // });
+
     this.popUpRefresh.addEventListener('click', () => {
-      this.onClick && this.onClick();
+      this.onRefreshClick && this.onRefreshClick();
       this.hide();
     });
   }
 
-  setClickListener(onClick) {
-    this.onClick = onClick;
+  // setClickListener(onClick) {
+  //   this.onClick = onClick;
+  // }
+
+  setClickListener(onRefreshClick) {
+    this.onRefreshClick = onRefreshClick;
   }
 
   hide() {

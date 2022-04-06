@@ -72,18 +72,19 @@ class Game {
 
   pause() {
     this.started = false;
-    sound.playAlert();
+    // sound.playAlert();
     this.stopGameTimer();
+    clearInterval(this.timer);
     this.bePlayBtn();
     this.gameFinishBanner.hideRefresh();
     this.gameFinishBanner.showText('REPLY ❓');
-    sound.stopBackground();
+    // sound.stopBackground();
     // this.freezeItems();
   }
 
   play() {
     this.started = true;
-    sound.playBackground();
+    // sound.playBackground();
     this.startGameTimer();
     this.beStopBtn();
     this.gameFinishBanner.showRefresh();
@@ -98,14 +99,14 @@ class Game {
     this.showTimerAndScore();
     this.startGameTimer();
     this.removeBlurOnGame();
-    sound.playBackground();
+    // sound.playBackground();
   }
 
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
     this.hideStopBtn();
-    sound.stopBackground();
+    // sound.stopBackground();
     this.onGameStop(reason);
   }
 
@@ -113,11 +114,11 @@ class Game {
     let message;
     switch (reason) {
       case Reason.win:
-        sound.playWin();
+        // sound.playWin();
         message = 'YOU WON 🎉';
         break;
       case Reason.lose:
-        sound.playBug();
+        // sound.playBug();
         message = 'YOU LOST 💩';
         break;
       default:
