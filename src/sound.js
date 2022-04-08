@@ -30,9 +30,13 @@ export function playWin() {
   playSound(winSound);
 }
 
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
+async function playSound(sound) {
+  try {
+    sound.currentTime = 0;
+    await sound.play();
+  } catch (err) {
+    console.log('DOMException');
+  }
 }
 
 function stopSound(sound) {

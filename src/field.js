@@ -57,7 +57,7 @@ export class Field {
     const target = event.target;
     if (target.matches('.carrot')) {
       target.remove();
-      // sound.playCarrot();
+      sound.playCarrot();
       this.onItemClick && this.onItemClick(ItemType.carrot);
     } else if (target.matches('.bug')) {
       this.onItemClick && this.onItemClick(ItemType.bug);

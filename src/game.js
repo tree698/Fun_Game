@@ -57,7 +57,6 @@ class Game {
     });
 
     this.gameLevel = new GameLevel();
-    this.gameLevel.setLevelBtnClickListener(this.onLevelBtnClick);
 
     this.gameField = new Field(this.carrotCount, this.bugCount);
     this.gameField.setItemClickListener(this.onItemClick);
@@ -70,26 +69,26 @@ class Game {
     this.score = 0;
   }
 
-  pause() {
-    this.started = false;
-    // sound.playAlert();
-    this.stopGameTimer();
-    clearInterval(this.timer);
-    this.bePlayBtn();
-    this.gameFinishBanner.hideRefresh();
-    this.gameFinishBanner.showText('REPLY ❓');
-    // sound.stopBackground();
-    // this.freezeItems();
-  }
-
   play() {
     this.started = true;
-    // sound.playBackground();
+    sound.playBackground();
+    this.showTimerAndScore();
     this.startGameTimer();
     this.beStopBtn();
     this.gameFinishBanner.showRefresh();
     this.gameFinishBanner.hide();
     this.initGame();
+  }
+
+  pause() {
+    this.started = false;
+    sound.playAlert();
+    this.hideTimerAndScore();
+    this.stopGameTimer();
+    this.bePlayBtn();
+    this.gameFinishBanner.hideRefresh();
+    this.gameFinishBanner.showText('REPLY ❓');
+    sound.stopBackground();
   }
 
   start() {
@@ -99,14 +98,14 @@ class Game {
     this.showTimerAndScore();
     this.startGameTimer();
     this.removeBlurOnGame();
-    // sound.playBackground();
+    sound.playBackground();
   }
 
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
     this.hideStopBtn();
-    // sound.stopBackground();
+    sound.stopBackground();
     this.onGameStop(reason);
   }
 
@@ -114,11 +113,11 @@ class Game {
     let message;
     switch (reason) {
       case Reason.win:
-        // sound.playWin();
+        sound.playWin();
         message = 'YOU WON 🎉';
         break;
       case Reason.lose:
-        // sound.playBug();
+        sound.playBug();
         message = 'YOU LOST 💩';
         break;
       default:
