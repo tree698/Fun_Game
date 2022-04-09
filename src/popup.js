@@ -24,14 +24,4 @@ export default class PopUp {
     this.popUp.classList.remove('hide');
     this.popUpMessage.textContent = text;
   }
-
-  hideRefresh() {
-    this.popUpRefresh.classList.add('hide');
-    this.popUpMessage.style.lineHeight = '170px';
-  }
-
-  showRefresh() {
-    this.popUpRefresh.classList.remove('hide');
-    this.popUpMessage.style.removeProperty('line-height');
-  }
 }

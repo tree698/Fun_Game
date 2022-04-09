@@ -4,7 +4,6 @@ export default class GameLevel {
   constructor() {
     this.level = document.querySelector('.level');
 
-    // event delegation!!
     this.level.addEventListener('click', (event) => {
       if (event.target.className == 'button level-button level-easy') {
         this.onClick && this.onClick('easy');

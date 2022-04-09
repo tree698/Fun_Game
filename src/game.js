@@ -50,9 +50,7 @@ class Game {
 
     this.gameStopBtn.addEventListener('click', () => {
       if (this.started) {
-        this.pause();
-      } else {
-        this.play();
+        this.stop(Reason.pause);
       }
     });
 
@@ -67,28 +65,6 @@ class Game {
     this.started = false;
     this.timer = undefined;
     this.score = 0;
-  }
-
-  play() {
-    this.started = true;
-    sound.playBackground();
-    this.showTimerAndScore();
-    this.startGameTimer();
-    this.beStopBtn();
-    this.gameFinishBanner.showRefresh();
-    this.gameFinishBanner.hide();
-    this.initGame();
-  }
-
-  pause() {
-    this.started = false;
-    sound.playAlert();
-    this.hideTimerAndScore();
-    this.stopGameTimer();
-    this.bePlayBtn();
-    this.gameFinishBanner.hideRefresh();
-    this.gameFinishBanner.showText('REPLY ❓');
-    sound.stopBackground();
   }
 
   start() {
@@ -119,6 +95,10 @@ class Game {
       case Reason.lose:
         sound.playBug();
         message = 'YOU LOST 💩';
+        break;
+      case Reason.pause:
+        sound.playAlert();
+        message = 'REPLY ❓';
         break;
       default:
         throw new Error('not valid reason');
