@@ -80,7 +80,7 @@ class Game {
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
-    this.hideStopBtn();
+    // this.hideStopBtn();
     sound.stopBackground();
     this.onGameStop(reason);
   }
@@ -98,7 +98,7 @@ class Game {
         break;
       case Reason.pause:
         sound.playAlert();
-        message = 'REPLY ❓';
+        message = 'REPLAY ❓';
         break;
       default:
         throw new Error('not valid reason');

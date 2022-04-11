@@ -17,13 +17,9 @@ export class Field {
     this.fieldRect = this.field.getBoundingClientRect();
     this.field.addEventListener('click', this.onClick);
 
-    this.gameIcon = document.querySelector('.fa-solid');
-    this.gameIcon.addEventListener('click', (event) => {
-      if (event.target.matches('.fa-stop')) {
-        this.field.removeEventListener('click', this.onClick);
-      } else {
-        this.field.addEventListener('click', this.onClick);
-      }
+    this.gameBtn = document.querySelector('.game__stop-button');
+    this.gameBtn.addEventListener('click', () => {
+      this.field.removeEventListener('click', this.onClick);
     });
   }
 
