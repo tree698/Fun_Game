@@ -16,6 +16,7 @@ HTML, CSS and JavaScript
 
 |**Version**|**Demo**|**Features**|
 |:--:|:--:|:--|
+|v1.1.1|<img width="500" alt="스크린샷 2022-04-12 오전 8 42 12" src="https://user-images.githubusercontent.com/53497516/162850612-1206bf1d-3fc7-4709-b66d-bd7761b376eb.png">|- Fix DOM Exception warning<br>- Fix pause button error<br>- Fix removeProperty error<br>- Add favicon|
 |v1.1.0|<img src="https://user-images.githubusercontent.com/53497516/160725269-64575009-6c9f-47e3-a971-1205dbbe0165.png" width="500">|:point_left: **Add game level banner**<br>The higher the level, the more carrots and bugs.|
 |v1.0.0|<img src="https://user-images.githubusercontent.com/53497516/155878437-6788ddfa-b316-4521-861d-667fae7a3372.gif" width="600">||</br>
 
