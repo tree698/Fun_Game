@@ -1,7 +1,7 @@
 'use strict';
 
 import { Field, ItemType } from './field.js';
-import GameLevel from './gameLevel.js';
+import { GameLevel, Level } from './gameLevel.js';
 import PopUp from './popup.js';
 import * as sound from './sound.js';
 
@@ -80,7 +80,6 @@ class Game {
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
-    // this.hideStopBtn();
     sound.stopBackground();
     this.onGameStop(reason);
   }

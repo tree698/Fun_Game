@@ -1,22 +1,22 @@
 'use strict';
 
 import GameBuilder from './game.js';
-import GameLevel from './gameLevel.js';
+import { GameLevel, Level } from './gameLevel.js';
 
 const gameLevel = new GameLevel();
-gameLevel.setLevelBtnClickListener((message) => {
+gameLevel.setLevelBtnClickListener((level) => {
   let carrotCount;
   let bugCount;
   let gameDuration;
-  if (message == 'easy') {
+  if (level == Level.easy) {
     carrotCount = 6;
     bugCount = 4;
     gameDuration = 8;
-  } else if (message == 'medium') {
+  } else if (level == Level.medium) {
     carrotCount = 12;
     bugCount = 12;
     gameDuration = 12;
-  } else if (message == 'high') {
+  } else if (level == Level.high) {
     carrotCount = 18;
     bugCount = 26;
     gameDuration = 16;
@@ -26,7 +26,33 @@ gameLevel.setLevelBtnClickListener((message) => {
     .withBugCount(bugCount)
     .withGameDuration(gameDuration)
     .build()
-    .start();
+    .start(level);
 
   gameLevel.hideLevel();
 });
+
+const body = document.querySelector('body');
+const section = document.querySelector('section');
+const gameName = document.querySelector('.game__name');
+
+showInitialPage();
+
+function showInitialPage() {
+  hideGameSection();
+  setTimeout(() => {
+    showGameSection();
+    hideGameName();
+  }, 2000);
+}
+
+function hideGameSection() {
+  section.classList.add('hide');
+}
+
+function showGameSection() {
+  section.classList.remove('hide');
+}
+
+function hideGameName() {
+  gameName.classList.add('hide');
+}

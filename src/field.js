@@ -26,10 +26,10 @@ export class Field {
   init() {
     this.field.innerHTML = '';
     this._addItem(ItemType.carrot, this.carrotCount, 'img/carrot.png');
-    this._addItem(ItemType.bug, this.bugCount, 'img/bug.png');
+    this._addItem(ItemType.bug, this.bugCount, 'img/bug.png', 'move');
   }
 
-  _addItem(className, count, imgPath) {
+  _addItem(className, count, imgPath, move) {
     const x1 = 0;
     const y1 = 0;
     const x2 = this.fieldRect.width - ITEM_SIZE;
@@ -46,8 +46,14 @@ export class Field {
       item.style.left = `${x}px`;
       item.style.top = `${y}px`;
       this.field.appendChild(item);
+
+      // move && this.movingItem(x, y);
     }
   }
+
+  // movingItem(x, y) {
+  //   console.log(x);
+  // }
 
   onClick = (event) => {
     const target = event.target;

@@ -2,7 +2,7 @@
 
 body {
   text-align: center;
-  background-color: #cfd8dc;
+  /* background-color: #cfd8dc; */
 }
 
 button {
@@ -12,6 +12,13 @@ button {
   background: white;
   border-radius: 20%;
   padding: 0;
+}
+
+.game__name {
+  font-size: 82px;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  transform: translateY(240px);
 }
 
 .game {
