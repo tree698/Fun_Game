@@ -3,6 +3,11 @@
 import GameBuilder from './game.js';
 import { GameLevel, Level } from './gameLevel.js';
 
+const section = document.querySelector('section');
+const gameName = document.querySelector('.game__name');
+
+showInitialPage();
+
 const gameLevel = new GameLevel();
 gameLevel.setLevelBtnClickListener((level) => {
   let carrotCount;
@@ -30,12 +35,6 @@ gameLevel.setLevelBtnClickListener((level) => {
 
   gameLevel.hideLevel();
 });
-
-const body = document.querySelector('body');
-const section = document.querySelector('section');
-const gameName = document.querySelector('.game__name');
-
-showInitialPage();
 
 function showInitialPage() {
   hideGameSection();
