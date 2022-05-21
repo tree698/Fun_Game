@@ -2,16 +2,12 @@
 
 body {
   text-align: center;
-  /* background-color: #cfd8dc; */
 }
 
 button {
   outline: none;
   cursor: pointer;
   border: none;
-  background: white;
-  border-radius: 20%;
-  padding: 0;
 }
 
 .game__name {
@@ -53,11 +49,10 @@ button {
   border-radius: 12px;
   background-color: black;
   color: white;
-  transition: tansform 300ms ease-in;
-  visibility: hidden;
+  transition: tansform 250ms ease-in;
 }
 
-.game__button:hover {
+.game__stop-button:hover {
   transform: scale(1.1);
 }
 
@@ -108,15 +103,15 @@ button {
   width: 70px;
   height: 70px;
   margin: 15px;
-  font-size: 30px;
+  font-size: 36px;
   background-color: lightyellow;
   color: black;
   border-radius: 50%;
-  transition: transform 300ms ease-in;
+  transition: transform 100ms ease-out;
 }
 
 .pop-up__refresh:hover {
-  transition: scale(1.1);
+  transform: scale(1.1);
 }
 
 .pop-up__message {
