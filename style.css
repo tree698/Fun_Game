@@ -50,6 +50,7 @@ button {
   background-color: black;
   color: white;
   transition: tansform 250ms ease-in;
+  visibility: hidden;
 }
 
 .game__stop-button:hover {

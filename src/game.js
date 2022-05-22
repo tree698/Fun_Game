@@ -82,6 +82,7 @@ class Game {
     this.stopGameTimer();
     sound.stopBackground();
     this.onGameStop(reason);
+    this.hideStopBtn();
   }
 
   onGameStop(reason) {
@@ -137,16 +138,6 @@ class Game {
 
   hideStopBtn() {
     this.gameStopBtn.style.visibility = 'hidden';
-  }
-
-  beStopBtn() {
-    this.icon.classList.add('fa-stop');
-    this.icon.classList.remove('fa-play');
-  }
-
-  bePlayBtn() {
-    this.icon.classList.add('fa-play');
-    this.icon.classList.remove('fa-stop');
   }
 
   showTimerAndScore() {
