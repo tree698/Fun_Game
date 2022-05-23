@@ -3,10 +3,11 @@
 import GameBuilder from './game.js';
 import { GameLevel, Level } from './gameLevel.js';
 
-const section = document.querySelector('section');
+const game = document.querySelector('.game');
+const level = document.querySelector('.level');
 const gameName = document.querySelector('.game__name');
 
-showInitialPage();
+showFunGameForTwoSecond();
 
 const gameLevel = new GameLevel();
 gameLevel.setLevelBtnClickListener((level) => {
@@ -36,20 +37,22 @@ gameLevel.setLevelBtnClickListener((level) => {
   gameLevel.hideLevel();
 });
 
-function showInitialPage() {
-  hideGameSection();
+function showFunGameForTwoSecond() {
+  hideGameAndLevel();
   setTimeout(() => {
-    showGameSection();
+    showGameAndLevel();
     hideGameName();
-  }, 1000);
+  }, 2000);
 }
 
-function hideGameSection() {
-  section.classList.add('hide');
+function hideGameAndLevel() {
+  game.classList.add('hide');
+  level.classList.add('hide');
 }
 
-function showGameSection() {
-  section.classList.remove('hide');
+function showGameAndLevel() {
+  game.classList.remove('hide');
+  level.classList.remove('hide');
 }
 
 function hideGameName() {
