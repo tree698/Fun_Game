@@ -2,7 +2,7 @@
 
 import * as sound from './sound.js';
 
-const ITEM_SIZE = 80;
+const ITEM_SIZE = 100;
 
 export const ItemType = Object.freeze({
   carrot: 'carrot',

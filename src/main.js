@@ -15,17 +15,17 @@ gameLevel.setLevelBtnClickListener((level) => {
   let bugCount;
   let gameDuration;
   if (level == Level.easy) {
-    carrotCount = 6;
-    bugCount = 4;
-    gameDuration = 8;
+    carrotCount = 10;
+    bugCount = 7;
+    gameDuration = 10;
   } else if (level == Level.medium) {
-    carrotCount = 12;
-    bugCount = 12;
-    gameDuration = 12;
+    carrotCount = 15;
+    bugCount = 20;
+    gameDuration = 15;
   } else if (level == Level.high) {
-    carrotCount = 18;
-    bugCount = 26;
-    gameDuration = 16;
+    carrotCount = 20;
+    bugCount = 30;
+    gameDuration = 20;
   }
   new GameBuilder()
     .withCarrotCount(carrotCount)
