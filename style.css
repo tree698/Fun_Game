@@ -16,6 +16,11 @@
   --color-white: #fff;
 }
 
+/* 깃헙 배포시 크기 조절 */
+html {
+  font-size: 12px;
+}
+
 body {
   text-align: center;
   margin: 0;
