@@ -2,8 +2,8 @@
 
 :root {
   /* Font Size */
-  --font-larger: 5rem;
-  --font-medium: 3.2rem;
+  --font-larger: 6rem;
+  --font-medium: 3rem;
   --font-regular: 2rem;
 
   /* color */
@@ -17,14 +17,15 @@
 }
 
 /* 깃헙 배포시 크기 조절 */
-html {
-  font-size: 12px;
-}
+/* html {
+  font-size: 16px;
+} */
 
 body {
   text-align: center;
-  margin: 0;
   position: relative;
+  background-color: var(--color-black);
+  margin: 0;
 }
 
 button {
@@ -37,19 +38,19 @@ button {
   font-size: var(--font-larger);
   font-family: 'Indie Flower', cursive;
   font-weight: bold;
-  transform: translateY(500%);
+  transform: translateY(200%);
 }
 
 .game {
-  width: 100vw;
-  height: 100vh;
+  width: 96rem;
+  height: 60rem;
+  margin: 4rem auto;
+
   display: flex;
   flex-direction: column;
   background: url(img/background.png) center/cover;
-}
 
-.game-blur {
-  opacity: 0.3;
+  border-radius: 1.1rem;
 }
 
 .game__header {
