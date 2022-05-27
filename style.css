@@ -3,8 +3,9 @@
 :root {
   /* Font Size */
   --font-larger: 6rem;
-  --font-medium: 3rem;
-  --font-regular: 2rem;
+  --font-medium: 4rem;
+  --font-regular: 2.5rem;
+  --font-small: 2rem;
 
   /* color */
   --color-orange: #ff953e;
@@ -18,7 +19,7 @@
 
 /* 깃헙 배포시 크기 조절 */
 html {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 body {
@@ -35,6 +36,7 @@ button {
 }
 
 .game__name {
+  color: var(--color-white);
   font-size: var(--font-larger);
   font-family: 'Indie Flower', cursive;
   font-weight: bold;
@@ -42,30 +44,30 @@ button {
 }
 
 .game {
-  width: 96rem;
-  height: 60rem;
+  width: 80rem;
+  height: 50rem;
   margin: 4rem auto;
 
   display: flex;
   flex-direction: column;
   background: url(img/background.png) center/cover;
 
-  border-radius: 1.1rem;
+  border-radius: 1.4rem;
 }
 
 .game__header {
   display: flex;
   flex-direction: column;
-  margin-top: 6.3rem;
+  margin-top: 0.5rem;
 }
 
 .game__stop-button {
-  width: 13rem;
-  height: 6.3rem;
+  width: 11rem;
+  height: 5rem;
   margin: auto;
-  font-size: var(--font-medium);
-  border: 6px solid white;
-  border-radius: 12px;
+  font-size: var(--font-regular);
+  border: 0.4rem solid white;
+  border-radius: 0.8rem;
   background-color: var(--color-black);
   color: var(--color-white);
   transition: tansform 250ms ease-in;
@@ -77,28 +79,28 @@ button {
 }
 
 .game__timer {
-  width: 13rem;
-  height: 4.3rem;
+  width: 10rem;
+  height: 3.6rem;
   line-height: 4.3rem;
-  border: 6px solid black;
-  border-radius: 12px;
+  border: 0.4rem solid black;
+  border-radius: 0.8rem;
   background-color: var(--color-white);
-  font-size: var(--font-medium);
-  margin: 1rem auto;
+  font-size: var(--font-regular);
+  margin: 0.5rem auto;
   visibility: hidden;
   user-select: none;
   cursor: auto;
 }
 
 .game__score {
-  width: 6.3rem;
-  height: 6.3rem;
-  line-height: 6.3rem;
-  border: 6px solid black;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  border: 0.4rem solid black;
   border-radius: 50%;
   background-color: var(--color-salmon);
   color: var(--color-white);
-  font-size: var(--font-medium);
+  font-size: var(--font-regular);
   margin: auto;
   visibility: hidden;
   user-select: none;
@@ -108,22 +110,24 @@ button {
 .game__field {
   width: 100%;
   height: 100%;
-  margin-top: 28rem;
-  border-radius: 0 0 20px 20px;
+  margin-top: 11rem;
+  border-radius: 0 0 1.3rem 1.3rem;
   position: relative;
+  /* background-color: blue;
+  opacity: 0.6; */
 }
 
 .pop-up,
 .level {
-  width: 50rem;
-  height: 25rem;
+  width: 45rem;
+  height: 20rem;
   background-color: var(--color-black);
-  border-radius: 20px;
+  border-radius: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -145,14 +149,14 @@ button {
 
 .pop-up__message {
   display: block;
-  font-size: var(--font-larger);
+  font-size: var(--font-medium);
   color: var(--color-white);
 }
 
 .carrot,
 .bug {
-  width: 6rem;
-  height: 6rem;
+  /* width: 6rem;
+  height: 6rem; */
   transition: transform 100ms ease-in;
 }
 
@@ -163,7 +167,7 @@ button {
 }
 
 .level-title {
-  font-size: var(--font-medium);
+  font-size: var(--font-regular);
   color: var(--color-white);
   font-weight: bold;
   margin-bottom: 1.7rem;
@@ -171,7 +175,7 @@ button {
 
 .level-message {
   color: var(--color-white);
-  font-size: var(--font-regular);
+  font-size: var(--font-small);
   margin-bottom: 0.8rem;
 }
 
@@ -183,9 +187,9 @@ button {
 .level-button {
   width: 10rem;
   height: 4rem;
-  font-size: var(--font-regular);
+  font-size: var(--font-small);
   color: var(--color-white);
-  border-radius: 6px;
+  border-radius: 0.4rem;
   transition: all 250ms ease-in;
 }
 
