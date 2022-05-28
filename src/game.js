@@ -76,6 +76,10 @@ class Game {
     sound.playBackground();
   }
 
+  // YES btn => continue 함수 (시간/스코어/음악/아이템)
+  // NO btn => this.onRefreshClick으로 연결
+  continue() {}
+
   stop(reason) {
     this.started = false;
     this.stopGameTimer();

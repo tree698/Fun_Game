@@ -113,8 +113,6 @@ button {
   margin-top: 11rem;
   border-radius: 0 0 1.3rem 1.3rem;
   position: relative;
-  /* background-color: blue;
-  opacity: 0.6; */
 }
 
 .pop-up,
@@ -155,8 +153,6 @@ button {
 
 .carrot,
 .bug {
-  /* width: 6rem;
-  height: 6rem; */
   transition: transform 100ms ease-in;
 }
 
