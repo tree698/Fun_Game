@@ -115,8 +115,7 @@ button {
   position: relative;
 }
 
-.pop-up,
-.level {
+.pop-up {
   width: 45rem;
   height: 20rem;
   background-color: var(--color-black);
@@ -130,7 +129,7 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.pop-up__refresh {
+.restart {
   width: 8rem;
   height: 8rem;
   margin: 1rem;
@@ -141,11 +140,11 @@ button {
   transition: transform 100ms ease-out;
 }
 
-.pop-up__refresh:hover {
+.restart:hover {
   transform: scale(1.1);
 }
 
-.pop-up__message {
+.message {
   display: block;
   font-size: var(--font-medium);
   color: var(--color-white);
@@ -162,70 +161,63 @@ button {
   cursor: pointer;
 }
 
-.level-title {
+.level__title {
   font-size: var(--font-regular);
   color: var(--color-white);
   font-weight: bold;
   margin-bottom: 1.7rem;
 }
 
-.level-message {
+.level__message {
   color: var(--color-white);
   font-size: var(--font-small);
   margin-bottom: 0.8rem;
 }
 
-.level-button-wrap {
+.level__container {
+  width: 74%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin: auto;
 }
 
-.level-button {
+.level__button {
   width: 10rem;
   height: 4rem;
   font-size: var(--font-small);
   color: var(--color-white);
   border-radius: 0.4rem;
-  transition: all 250ms ease-in;
+  transition: all 150ms ease-out;
 }
 
-.level-button:hover {
-  color: var(--color-white);
-  font-weight: bold;
-  transform: scale(1.08);
-}
-
-.level-button.level-medium {
-  margin: 0 2rem;
-}
-
-.level-button.level-easy {
+.level__button.easy {
   background-color: var(--color-orange);
 }
 
-.level-button.level-medium {
-  background-color: var(--color-darkOrange);
-}
-
-.level-button.level-high {
-  background-color: var(--color-red);
-}
-
-.level-button:hover {
-  background-color: var(--color-white);
-  transform: scale(1.02);
-}
-
-.level-button.level-easy:hover {
+.level__button.easy:hover {
   color: var(--color-orange);
 }
 
-.level-button.level-medium:hover {
+.level__button.medium {
+  background-color: var(--color-darkOrange);
+}
+
+.level__button.medium:hover {
   color: var(--color-darkOrange);
 }
 
-.level-button.level-high:hover {
+.level__button.high {
+  background-color: var(--color-red);
+}
+
+.level__button.high:hover {
   color: var(--color-red);
+}
+
+.level__button:hover {
+  background-color: var(--color-white);
+  font-weight: bold;
+  transform: scale(1.1);
 }
 
 .hide {
