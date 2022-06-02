@@ -8,14 +8,14 @@ export const Level = Object.freeze({
 
 export class GameLevel {
   constructor() {
-    this.level = document.querySelector('.level');
+    this.level = document.querySelector('.pop-up__level');
 
     this.level.addEventListener('click', (event) => {
-      if (event.target.className == 'button level-button level-easy') {
+      if (event.target.className == 'level__button easy') {
         this.onClick && this.onClick(Level.easy);
-      } else if (event.target.className == 'button level-button level-medium') {
+      } else if (event.target.className == 'level__button medium') {
         this.onClick && this.onClick(Level.medium);
-      } else if (event.target.className == 'button level-button level-high') {
+      } else if (event.target.className == 'level__button high') {
         this.onClick && this.onClick(Level.high);
       }
     });

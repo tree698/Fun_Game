@@ -4,7 +4,7 @@ import GameBuilder from './game.js';
 import { GameLevel, Level } from './gameLevel.js';
 
 const game = document.querySelector('.game');
-const level = document.querySelector('.level');
+const level = document.querySelector('.pop-up__level');
 const gameName = document.querySelector('.game__name');
 
 showFunGameForTwoSecond();

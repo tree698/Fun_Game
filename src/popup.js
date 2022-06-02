@@ -2,9 +2,9 @@
 
 export default class PopUp {
   constructor() {
-    this.popUp = document.querySelector('.pop-up');
-    this.popUpRefresh = document.querySelector('.pop-up__refresh');
-    this.popUpMessage = document.querySelector('.pop-up__message');
+    this.popUp = document.querySelector('.pop-up__result');
+    this.popUpRefresh = document.querySelector('.restart');
+    this.popUpMessage = document.querySelector('.message');
 
     this.popUpRefresh.addEventListener('click', () => {
       this.onRefreshClick && this.onRefreshClick();

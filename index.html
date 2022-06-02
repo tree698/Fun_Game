@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- <script type="module" src="./src/main.js" defer></script> -->
+    <script type="module" src="./src/main.js" defer></script>
     <script
       src="https://kit.fontawesome.com/2338065aad.js"
       crossorigin="anonymous"
@@ -31,34 +31,32 @@
       <section class="game__field"></section>
     </section>
 
-    <section class="pop-up">
-      <!-- Game Result Pop-up: Win or Lose -->
-      <section class="result hide">
-        <button class="restart">
-          <i class="fas fa-redo-alt"></i>
-        </button>
-        <span class="message">Hello</span>
-      </section>
+    <!-- Game Result Pop-up: Win or Lose -->
+    <section class="pop-up__result hide">
+      <button class="restart">
+        <i class="fas fa-redo-alt"></i>
+      </button>
+      <span class="message">Hello</span>
+    </section>
 
-      <!-- Game Pause Pop-up-->
-      <section class="pause hide">
-        <span class="message">Hello</span>
-        <div class="asking__continue">
-          <button class="continue-yes">YES</button>
-          <button class="continue-no">NO</button>
-        </div>
-      </section>
+    <!-- Game Pause Pop-up-->
+    <section class="pop-up__pause hide">
+      <span class="message">Hello</span>
+      <div class="asking__continue">
+        <button class="continue-yes">YES</button>
+        <button class="continue-no">NO</button>
+      </div>
+    </section>
 
-      <!-- Choose Game Level Pop-up-->
-      <section class="level">
-        <div class="level__title">Want to Play Fun Game? 🥕</div>
-        <div class="level__message">~ Choose One ~</div>
-        <div class="level__container">
-          <button class="level__button easy">easy</button>
-          <button class="level__button medium">medium</button>
-          <button class="level__button high">high</button>
-        </div>
-      </section>
+    <!-- Game Level Pop-up-->
+    <section class="pop-up__level">
+      <div class="level__title">Want to Play Fun Game? 🥕</div>
+      <div class="level__message">~ Choose One ~</div>
+      <div class="level__container">
+        <button class="level__button easy">easy</button>
+        <button class="level__button medium">medium</button>
+        <button class="level__button high">high</button>
+      </div>
     </section>
   </body>
 </html>
