@@ -46,11 +46,29 @@ class Game {
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
     this.gameStopBtn = document.querySelector('.game__stop-button');
-    this.icon = this.gameStopBtn.querySelector('.fa-solid');
 
+    // this.icon = this.gameStopBtn.querySelector('.fa-solid');
+
+    this.popUpPauseBanner = document.querySelector('.pop-up__pause');
+
+    // 시간/배경음악 일시 중지 & 아이템 freeze
     this.gameStopBtn.addEventListener('click', () => {
       if (this.started) {
-        this.stop(Reason.pause);
+        // this.stop(Reason.pause);
+        this.pause();
+      }
+    });
+
+    // 시간/배경음악 이어 진행 & 아이템 freeze 해제
+    this.continueYes = document.querySelector('.continue-yes');
+    this.continueYes.addEventListener('click', () => {
+      if (this.started) {
+      }
+    });
+    // this.onRefreshClick으로 연결
+    this.continueNo = document.querySelector('.continue-no');
+    this.continueNo.addEventListener('click', () => {
+      if (this.started) {
       }
     });
 
@@ -76,16 +94,23 @@ class Game {
     sound.playBackground();
   }
 
-  // YES btn => continue 함수 (시간/스코어/음악/아이템)
-  // NO btn => this.onRefreshClick으로 연결
-  continue() {}
-
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
     sound.stopBackground();
     this.onGameStop(reason);
     this.hideStopBtn();
+  }
+
+  pause() {
+    this.stopGameTimer();
+    sound.stopBackground();
+    this.showPauseBanner();
+    this.hideStopBtn();
+  }
+
+  showPauseBanner() {
+    this.popUpPauseBanner.classList.remove('hide');
   }
 
   onGameStop(reason) {
