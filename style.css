@@ -15,6 +15,8 @@
   --color-salmon: #fa8072;
   --color-lightYellow: #ffffe0;
   --color-white: #fff;
+  --color-green: #3b9277;
+  --colir-red: #f8585b;
 }
 
 /* 깃헙 배포시 크기 조절 */
@@ -65,7 +67,7 @@ button {
   width: 11rem;
   height: 5rem;
   margin: auto;
-  font-size: var(--font-regular);
+  font-size: var(--font-small);
   border: 0.4rem solid white;
   border-radius: 0.8rem;
   background-color: var(--color-black);
@@ -153,15 +155,28 @@ button {
   color: var(--color-white);
 }
 
-.carrot,
-.bug {
-  transition: transform 100ms ease-in;
+.continue-button__yes,
+.continue-button__no {
+  width: 12rem;
+  height: 4rem;
+  font-size: var(--font-regular);
+  margin: 0.4em;
+  border-radius: 0.2em;
+  transition: transform 200ms ease-out;
 }
 
-.carrot:hover,
-.bug:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+.continue-button__yes:hover,
+.continue-button__no:hover {
+  transform: scale(1.08);
+  color: var(--color-white);
+}
+
+.continue-button__yes:hover {
+  background-color: var(--color-green);
+}
+
+.continue-button__no:hover {
+  background-color: var(--color-red);
 }
 
 .level__title {
@@ -218,4 +233,15 @@ button {
 
 .hide {
   display: none;
+}
+
+.carrot,
+.bug {
+  transition: transform 100ms ease-in;
+}
+
+.carrot:hover,
+.bug:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }

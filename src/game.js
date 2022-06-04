@@ -47,9 +47,9 @@ class Game {
     this.gameScore = document.querySelector('.game__score');
     this.gameStopBtn = document.querySelector('.game__stop-button');
 
-    // this.icon = this.gameStopBtn.querySelector('.fa-solid');
-
     this.popUpPauseBanner = document.querySelector('.pop-up__pause');
+    this.continueYes = document.querySelector('.continue-button__yes');
+    this.continueNo = document.querySelector('.continue-button__no');
 
     // 시간/배경음악 일시 중지 & 아이템 freeze
     this.gameStopBtn.addEventListener('click', () => {
@@ -60,15 +60,15 @@ class Game {
     });
 
     // 시간/배경음악 이어 진행 & 아이템 freeze 해제
-    this.continueYes = document.querySelector('.continue-yes');
     this.continueYes.addEventListener('click', () => {
       if (this.started) {
       }
     });
     // this.onRefreshClick으로 연결
-    this.continueNo = document.querySelector('.continue-no');
     this.continueNo.addEventListener('click', () => {
       if (this.started) {
+        this.onRefreshClick();
+        this.hidePauseBanner();
       }
     });
 
@@ -104,13 +104,18 @@ class Game {
 
   pause() {
     this.stopGameTimer();
-    sound.stopBackground();
-    this.showPauseBanner();
     this.hideStopBtn();
+    this.showPauseBanner();
+    sound.stopBackground();
+    sound.playAlert();
   }
 
   showPauseBanner() {
     this.popUpPauseBanner.classList.remove('hide');
+  }
+
+  hidePauseBanner() {
+    this.popUpPauseBanner.classList.add('hide');
   }
 
   onGameStop(reason) {
