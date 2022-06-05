@@ -3,7 +3,7 @@
 :root {
   /* Font Size */
   --font-larger: 6rem;
-  --font-medium: 4rem;
+  --font-medium: 3.5rem;
   --font-regular: 2.5rem;
   --font-small: 2rem;
 
@@ -37,24 +37,34 @@ button {
   border: none;
 }
 
+.app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .game__name {
   color: var(--color-white);
   font-size: var(--font-larger);
   font-family: 'Indie Flower', cursive;
   font-weight: bold;
-  transform: translateY(200%);
 }
 
 .game {
   width: 80rem;
   height: 50rem;
-  margin: 4rem auto;
+  margin: auto;
 
   display: flex;
   flex-direction: column;
   background: url(img/background.png) center/cover;
 
   border-radius: 1.4rem;
+
+  position: relative;
 }
 
 .game__header {
@@ -126,7 +136,10 @@ button {
   border-radius: 1.3rem;
 
   margin: auto;
-  transform: translateY(-180%);
+
+  position: absolute;
+  top: 35%;
+  left: 24%;
 
   display: flex;
   flex-direction: column;
@@ -159,7 +172,7 @@ button {
 .continue-button__no {
   width: 12rem;
   height: 4rem;
-  font-size: var(--font-regular);
+  font-size: var(--font-small);
   margin: 0.4em;
   border-radius: 0.2em;
   transition: transform 200ms ease-out;
@@ -180,7 +193,7 @@ button {
 }
 
 .level__title {
-  font-size: var(--font-regular);
+  font-size: var(--font-medium);
   color: var(--color-white);
   font-weight: bold;
 }

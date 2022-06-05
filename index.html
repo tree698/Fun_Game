@@ -21,42 +21,43 @@
   </head>
 
   <body>
-    <aside class="game__name">FUN GAME</aside>
-    <section class="game">
-      <header class="game__header">
-        <button class="game__stop-button">PAUSE</button>
-        <span class="game__timer">0:00</span>
-        <span class="game__score">0</span>
-      </header>
-      <section class="game__field"></section>
-    </section>
+    <section class="app">
+      <aside class="game__name">FUN GAME</aside>
+      <section class="game">
+        <header class="game__header">
+          <button class="game__stop-button">PAUSE</button>
+          <span class="game__timer">0:00</span>
+          <span class="game__score">0</span>
+        </header>
+        <section class="game__field"></section>
+        <!-- Game Result Pop-up: Win or Lose -->
+        <section class="pop-up__result hide">
+          <button class="restart">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+          <span class="message">Hello</span>
+        </section>
 
-    <!-- Game Result Pop-up: Win or Lose -->
-    <section class="pop-up__result hide">
-      <button class="restart">
-        <i class="fas fa-redo-alt"></i>
-      </button>
-      <span class="message">Hello</span>
-    </section>
+        <!-- Game Pause Pop-up-->
+        <section class="pop-up__pause hide">
+          <span class="message">Continue❓</span>
+          <div class="asking__continue">
+            <button class="continue-button__yes">YES</button>
+            <button class="continue-button__no">NO</button>
+          </div>
+        </section>
 
-    <!-- Game Pause Pop-up-->
-    <section class="pop-up__pause hide">
-      <span class="message">Continue❓</span>
-      <div class="asking__continue">
-        <button class="continue-button__yes">YES</button>
-        <button class="continue-button__no">NO</button>
-      </div>
-    </section>
-
-    <!-- Game Level Pop-up-->
-    <section class="pop-up__level">
-      <div class="level__title">Want to Play Fun Game? 🥕</div>
-      <div class="level__message">~ Choose One ~</div>
-      <div class="level__container">
-        <button class="level__button easy">easy</button>
-        <button class="level__button medium">medium</button>
-        <button class="level__button high">high</button>
-      </div>
+        <!-- Game Level Pop-up-->
+        <section class="pop-up__level">
+          <div class="level__title">Let's Play Fun Game? 🥕</div>
+          <div class="level__message">~ Choose One ~</div>
+          <div class="level__container">
+            <button class="level__button easy">easy</button>
+            <button class="level__button medium">medium</button>
+            <button class="level__button high">high</button>
+          </div>
+        </section>
+      </section>
     </section>
   </body>
 </html>
