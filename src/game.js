@@ -8,7 +8,7 @@ import * as sound from './sound.js';
 export const Reason = Object.freeze({
   win: 'win',
   lose: 'lose',
-  pause: 'pause',
+  // pause: 'pause',
 });
 
 export default class GameBuilder {
@@ -45,14 +45,14 @@ class Game {
     this.game = document.querySelector('.game');
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
-    this.gameStopBtn = document.querySelector('.game__stop-button');
+    this.gamePauseBtn = document.querySelector('.game__pause-button');
 
     this.popUpPauseBanner = document.querySelector('.pop-up__pause');
     this.continueYes = document.querySelector('.continue-button__yes');
     this.continueNo = document.querySelector('.continue-button__no');
 
     // 시간/배경음악 일시 중지 & 아이템 freeze
-    this.gameStopBtn.addEventListener('click', () => {
+    this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
         // this.stop(Reason.pause);
         this.pause();
@@ -61,15 +61,17 @@ class Game {
 
     // 시간/배경음악 이어 진행 & 아이템 freeze 해제
     this.continueYes.addEventListener('click', () => {
-      if (this.started) {
-      }
+      this.showStopBtn();
+      this.hidePauseBanner();
+      this.continueGameTimer();
+
+      sound.playBackground(); //이어서
+      // 아이템 freeze 해제
     });
     // this.onRefreshClick으로 연결
     this.continueNo.addEventListener('click', () => {
-      if (this.started) {
-        this.onRefreshClick();
-        this.hidePauseBanner();
-      }
+      this.onRefreshClick();
+      this.hidePauseBanner();
     });
 
     this.gameLevel = new GameLevel();
@@ -83,6 +85,7 @@ class Game {
     this.started = false;
     this.timer = undefined;
     this.score = 0;
+    this.currentRemainTime = 0;
   }
 
   start() {
@@ -129,10 +132,10 @@ class Game {
         sound.playBug();
         message = 'YOU LOST 💩';
         break;
-      case Reason.pause:
-        sound.playAlert();
-        message = 'REPLAY ❓';
-        break;
+      // case Reason.pause:
+      //   sound.playAlert();
+      //   message = 'REPLAY ❓';
+      //   break;
       default:
         throw new Error('not valid reason');
     }
@@ -165,11 +168,11 @@ class Game {
   }
 
   showStopBtn() {
-    this.gameStopBtn.style.visibility = 'visible';
+    this.gamePauseBtn.style.visibility = 'visible';
   }
 
   hideStopBtn() {
-    this.gameStopBtn.style.visibility = 'hidden';
+    this.gamePauseBtn.style.visibility = 'hidden';
   }
 
   showTimerAndScore() {
@@ -184,16 +187,41 @@ class Game {
 
   startGameTimer() {
     let remainingTimeSec = this.gameDurationSec;
+    this.currentRemainTime = remainingTimeSec;
     this.updateTimerText(remainingTimeSec);
     this.timer = setInterval(() => {
       if (remainingTimeSec <= 0) {
         clearInterval(this.timer);
         this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
+        this.currentRemainTime = 0;
         return;
       }
+      --this.currentRemainTime;
       this.updateTimerText(--remainingTimeSec);
     }, 1000);
   }
+
+  continueGameTimer() {
+    this.updateTimerText(this.currentRemainTime);
+    this.timer = setInterval(() => {
+      if (this.currentRemainTime <= 0) {
+        clearInterval(this.timer);
+        this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
+        this.currentRemainTime = 0;
+        return;
+      }
+      this.updateTimerText(--this.currentRemainTime);
+    }, 1000);
+  }
+
+  // setGameTimer() {
+  //   if (remainingTimeSec <= 0) {
+  //       clearInterval(this.timer);
+  //       this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
+  //       this.currentRemainTime = 0;
+  //       return;
+  //     }
+  // }
 
   stopGameTimer() {
     clearInterval(this.timer);

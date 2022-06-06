@@ -73,7 +73,7 @@ button {
   margin-top: 0.5rem;
 }
 
-.game__stop-button {
+.game__pause-button {
   width: 11rem;
   height: 5rem;
   margin: auto;
@@ -86,7 +86,7 @@ button {
   visibility: hidden;
 }
 
-.game__stop-button:hover {
+.game__pause-button:hover {
   transform: scale(1.1);
 }
 

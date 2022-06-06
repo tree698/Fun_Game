@@ -17,10 +17,10 @@ export class Field {
     this.fieldRect = this.field.getBoundingClientRect();
     this.field.addEventListener('click', this.onClick);
 
-    this.gameBtn = document.querySelector('.game__stop-button');
-    this.gameBtn.addEventListener('click', () => {
-      this.field.removeEventListener('click', this.onClick);
-    });
+    this.gamePauseBtn = document.querySelector('.game__pause-button');
+    // this.gamePauseBtn.addEventListener('click', () => {
+    //   this.field.removeEventListener('click', this.onClick);
+    // });
   }
 
   init() {
