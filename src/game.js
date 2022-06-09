@@ -51,24 +51,22 @@ class Game {
     this.continueYes = document.querySelector('.continue-button__yes');
     this.continueNo = document.querySelector('.continue-button__no');
 
-    // 시간/배경음악 일시 중지 & 아이템 freeze
+    // To Do: freeze Items
     this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
-        // this.stop(Reason.pause);
         this.pause();
       }
     });
 
-    // 시간/배경음악 이어 진행 & 아이템 freeze 해제
+    // To Do: release freezed items & continue background sound
     this.continueYes.addEventListener('click', () => {
+      this.started = true;
       this.showStopBtn();
       this.hidePauseBanner();
-      this.continueGameTimer();
-
-      sound.playBackground(); //이어서
-      // 아이템 freeze 해제
+      this.startGameTimer(this.currentRemainTime);
+      sound.playBackground();
     });
-    // this.onRefreshClick으로 연결
+
     this.continueNo.addEventListener('click', () => {
       this.onRefreshClick();
       this.hidePauseBanner();
@@ -93,24 +91,47 @@ class Game {
     this.initGame();
     this.showStopBtn();
     this.showTimerAndScore();
-    this.startGameTimer();
+    this.startGameTimer(this.gameDurationSec);
     sound.playBackground();
   }
 
+  // stop() vs. pause() => duplicate
   stop(reason) {
     this.started = false;
     this.stopGameTimer();
+    this.hideStopBtn();
     sound.stopBackground();
     this.onGameStop(reason);
-    this.hideStopBtn();
   }
 
   pause() {
+    this.started = false;
     this.stopGameTimer();
     this.hideStopBtn();
-    this.showPauseBanner();
     sound.stopBackground();
+    this.showPauseBanner();
     sound.playAlert();
+  }
+
+  // To Do: overlaped time
+  startGameTimer(timeSec) {
+    let remainingTimeSec = timeSec;
+    this.currentRemainTime = timeSec;
+    this.updateTimerText(remainingTimeSec);
+    this.timer = setInterval(() => {
+      if (remainingTimeSec <= 0) {
+        clearInterval(this.timer);
+        this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
+        return;
+      }
+      --this.currentRemainTime;
+      this.updateTimerText(--remainingTimeSec);
+    }, 1000);
+  }
+
+  stopGameTimer() {
+    clearInterval(this.timer);
+    this.timer = undefined;
   }
 
   showPauseBanner() {
@@ -183,48 +204,6 @@ class Game {
   hideTimerAndScore() {
     this.gameTimer.style.visibility = 'hidden';
     this.gameScore.style.visibility = 'hidden';
-  }
-
-  startGameTimer() {
-    let remainingTimeSec = this.gameDurationSec;
-    this.currentRemainTime = remainingTimeSec;
-    this.updateTimerText(remainingTimeSec);
-    this.timer = setInterval(() => {
-      if (remainingTimeSec <= 0) {
-        clearInterval(this.timer);
-        this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
-        this.currentRemainTime = 0;
-        return;
-      }
-      --this.currentRemainTime;
-      this.updateTimerText(--remainingTimeSec);
-    }, 1000);
-  }
-
-  continueGameTimer() {
-    this.updateTimerText(this.currentRemainTime);
-    this.timer = setInterval(() => {
-      if (this.currentRemainTime <= 0) {
-        clearInterval(this.timer);
-        this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
-        this.currentRemainTime = 0;
-        return;
-      }
-      this.updateTimerText(--this.currentRemainTime);
-    }, 1000);
-  }
-
-  // setGameTimer() {
-  //   if (remainingTimeSec <= 0) {
-  //       clearInterval(this.timer);
-  //       this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
-  //       this.currentRemainTime = 0;
-  //       return;
-  //     }
-  // }
-
-  stopGameTimer() {
-    clearInterval(this.timer);
   }
 
   updateTimerText(time) {
