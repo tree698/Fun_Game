@@ -8,7 +8,6 @@ import * as sound from './sound.js';
 export const Reason = Object.freeze({
   win: 'win',
   lose: 'lose',
-  // pause: 'pause',
 });
 
 export default class GameBuilder {
@@ -46,12 +45,22 @@ class Game {
     this.gameTimer = document.querySelector('.game__timer');
     this.gameScore = document.querySelector('.game__score');
     this.gamePauseBtn = document.querySelector('.game__pause-button');
-
     this.popUpPauseBanner = document.querySelector('.pop-up__pause');
     this.continueYes = document.querySelector('.continue-button__yes');
     this.continueNo = document.querySelector('.continue-button__no');
 
-    // To Do: freeze Items
+    this.gameLevel = new GameLevel();
+    this.gameField = new Field(this.carrotCount, this.bugCount);
+    this.gameField.setItemClickListener(this.onItemClick);
+    this.gameFinishBanner = new PopUp();
+    this.gameFinishBanner.setClickListener(this.onRefreshClick);
+
+    this.started = false;
+    this.timer = undefined;
+    this.score = 0;
+    this.currentRemainTime = 0;
+
+    // To Do: freeze Items => started 활용 ?
     this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
         this.pause();
@@ -71,19 +80,6 @@ class Game {
       this.onRefreshClick();
       this.hidePauseBanner();
     });
-
-    this.gameLevel = new GameLevel();
-
-    this.gameField = new Field(this.carrotCount, this.bugCount);
-    this.gameField.setItemClickListener(this.onItemClick);
-
-    this.gameFinishBanner = new PopUp();
-    this.gameFinishBanner.setClickListener(this.onRefreshClick);
-
-    this.started = false;
-    this.timer = undefined;
-    this.score = 0;
-    this.currentRemainTime = 0;
   }
 
   start() {
@@ -153,10 +149,6 @@ class Game {
         sound.playBug();
         message = 'YOU LOST 💩';
         break;
-      // case Reason.pause:
-      //   sound.playAlert();
-      //   message = 'REPLAY ❓';
-      //   break;
       default:
         throw new Error('not valid reason');
     }

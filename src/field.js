@@ -13,14 +13,20 @@ export class Field {
   constructor(carrotCount, bugCount) {
     this.carrotCount = carrotCount;
     this.bugCount = bugCount;
-    this.field = document.querySelector('.game__field');
-    this.fieldRect = this.field.getBoundingClientRect();
-    this.field.addEventListener('click', this.onClick);
 
+    this.field = document.querySelector('.game__field');
     this.gamePauseBtn = document.querySelector('.game__pause-button');
-    // this.gamePauseBtn.addEventListener('click', () => {
-    //   this.field.removeEventListener('click', this.onClick);
-    // });
+    this.continueYesBtn = document.querySelector('.continue-button__yes');
+
+    this.fieldRect = this.field.getBoundingClientRect();
+
+    this.field.addEventListener('click', this.onClick);
+    this.gamePauseBtn.addEventListener('click', () => {
+      this.field.removeEventListener('click', this.onClick);
+    });
+    this.continueYesBtn.addEventListener('click', () => {
+      this.field.addEventListener('click', this.onClick);
+    });
   }
 
   init() {
