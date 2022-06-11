@@ -60,14 +60,13 @@ class Game {
     this.score = 0;
     this.currentRemainTime = 0;
 
-    // To Do: freeze Items => started 활용 ?
     this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
         this.pause();
       }
     });
 
-    // To Do: release freezed items & continue background sound
+    // To Do: continue background sound
     this.continueYes.addEventListener('click', () => {
       this.started = true;
       this.showStopBtn();
@@ -91,22 +90,22 @@ class Game {
     sound.playBackground();
   }
 
-  // stop() vs. pause() => duplicate
   stop(reason) {
-    this.started = false;
-    this.stopGameTimer();
-    this.hideStopBtn();
-    sound.stopBackground();
+    this.commonOnStopPause();
     this.onGameStop(reason);
   }
 
   pause() {
+    this.commonOnStopPause();
+    this.showPauseBanner();
+    sound.playAlert();
+  }
+
+  commonOnStopPause() {
     this.started = false;
     this.stopGameTimer();
     this.hideStopBtn();
     sound.stopBackground();
-    this.showPauseBanner();
-    sound.playAlert();
   }
 
   // To Do: overlaped time
