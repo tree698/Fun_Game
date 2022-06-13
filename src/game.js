@@ -58,7 +58,8 @@ class Game {
     this.started = false;
     this.timer = undefined;
     this.score = 0;
-    this.currentRemainTime = 0;
+    this.currentRemainSec = 0;
+    this.bgMusic;
 
     this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
@@ -66,13 +67,12 @@ class Game {
       }
     });
 
-    // To Do: continue background sound
     this.continueYes.addEventListener('click', () => {
       this.started = true;
       this.showStopBtn();
       this.hidePauseBanner();
-      this.startGameTimer(this.currentRemainTime);
-      sound.playBackground();
+      this.startGameTimer(this.currentRemainSec);
+      sound.resumeBackground();
     });
 
     this.continueNo.addEventListener('click', () => {
@@ -111,7 +111,7 @@ class Game {
   // To Do: overlaped time
   startGameTimer(timeSec) {
     let remainingTimeSec = timeSec;
-    this.currentRemainTime = timeSec;
+    this.currentRemainSec = timeSec;
     this.updateTimerText(remainingTimeSec);
     this.timer = setInterval(() => {
       if (remainingTimeSec <= 0) {
@@ -119,14 +119,13 @@ class Game {
         this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
         return;
       }
-      --this.currentRemainTime;
+      --this.currentRemainSec;
       this.updateTimerText(--remainingTimeSec);
     }, 1000);
   }
 
   stopGameTimer() {
     clearInterval(this.timer);
-    this.timer = undefined;
   }
 
   showPauseBanner() {

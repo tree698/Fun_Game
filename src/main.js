@@ -32,7 +32,7 @@ gameLevel.setLevelBtnClickListener((level) => {
     .withBugCount(bugCount)
     .withGameDuration(gameDuration)
     .build()
-    .start(level);
+    .start();
 
   gameLevel.hideLevel();
 });
