@@ -5,7 +5,7 @@ import { GameLevel, Level } from './gameLevel.js';
 
 const game = document.querySelector('.game');
 const level = document.querySelector('.pop-up__level');
-const gameName = document.querySelector('.game__name');
+const gameName = document.querySelector('.loading__container');
 
 showFunGameForTwoSecond();
 
@@ -42,7 +42,7 @@ function showFunGameForTwoSecond() {
   setTimeout(() => {
     showGameAndLevel();
     hideGameName();
-  }, 2000);
+  }, 5000);
 }
 
 function hideGameAndLevel() {

@@ -59,7 +59,6 @@ class Game {
     this.timer = undefined;
     this.score = 0;
     this.currentRemainSec = 0;
-    this.bgMusic;
 
     this.gamePauseBtn.addEventListener('click', () => {
       if (this.started) {
@@ -108,24 +107,32 @@ class Game {
     sound.stopBackground();
   }
 
-  // To Do: overlaped time
+  // overlaped time
   startGameTimer(timeSec) {
-    let remainingTimeSec = timeSec;
     this.currentRemainSec = timeSec;
-    this.updateTimerText(remainingTimeSec);
+    this.updateTimerText(timeSec);
+
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = undefined;
+    }
+    // console.log(this.timer);
+
     this.timer = setInterval(() => {
-      if (remainingTimeSec <= 0) {
+      if (timeSec <= 0) {
         clearInterval(this.timer);
         this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
         return;
       }
       --this.currentRemainSec;
-      this.updateTimerText(--remainingTimeSec);
+      this.updateTimerText(--timeSec);
     }, 1000);
   }
 
   stopGameTimer() {
     clearInterval(this.timer);
+    this.timer = undefined;
+    // console.log(this.timer);
   }
 
   showPauseBanner() {
