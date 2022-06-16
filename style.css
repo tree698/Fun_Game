@@ -77,8 +77,8 @@ button {
   background-color: var(--color-black);
   -webkit-transform-origin: 100% 0%;
   transform-origin: 100% 0%;
-  -webkit-animation: loader 4s ease-in-out infinite;
-  animation: loader 4s ease-in-out infinite;
+  -webkit-animation: loader 6s ease-in-out infinite;
+  animation: loader 6s ease-in-out infinite;
 }
 
 @-webkit-keyframes loader {
