@@ -42,7 +42,7 @@ function showFunGameForTwoSecond() {
   setTimeout(() => {
     showGameAndLevel();
     hideGameName();
-  }, 5000);
+  }, 3800);
 }
 
 function hideGameAndLevel() {
