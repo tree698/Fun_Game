@@ -107,7 +107,6 @@ class Game {
     sound.stopBackground();
   }
 
-  // overlaped time
   startGameTimer(timeSec) {
     this.currentRemainSec = timeSec;
     this.updateTimerText(timeSec);
@@ -116,7 +115,6 @@ class Game {
       clearInterval(this.timer);
       this.timer = undefined;
     }
-    // console.log(this.timer);
 
     this.timer = setInterval(() => {
       if (timeSec <= 0) {
@@ -132,7 +130,6 @@ class Game {
   stopGameTimer() {
     clearInterval(this.timer);
     this.timer = undefined;
-    // console.log(this.timer);
   }
 
   showPauseBanner() {

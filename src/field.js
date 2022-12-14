@@ -52,14 +52,8 @@ export class Field {
       item.style.left = `${x}px`;
       item.style.top = `${y}px`;
       this.field.appendChild(item);
-
-      // move && this.movingItem(x, y);
     }
   }
-
-  // movingItem(x, y) {
-  //   console.log(x);
-  // }
 
   onClick = (event) => {
     const target = event.target;
